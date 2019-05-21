@@ -35,7 +35,7 @@ import Foundation
 //    }
 //}
 
-struct User: Codable{
+struct User: Codable {
     var name: String = ""
     var id: Int = 0
     var public_repos: Int = 0
@@ -43,9 +43,9 @@ struct User: Codable{
 }
 
 struct Repos: Codable {
-    let name: String = ""
-    let description: String = ""
-    let created_at: String = ""
+    let name: String?
+    let description: String?
+    let created_at: String?
 }
 
 

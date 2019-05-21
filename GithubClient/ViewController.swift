@@ -7,18 +7,20 @@ private let badResponseError = NSError(domain: "Bad network response", code: 2, 
 class ViewController: UIViewController {
     
     @IBOutlet weak var textView: UITextView!
-    private(set) var user = User()
-    private(set) var repos: [Repos] = []
+    var user = User()
+     var repos: [Repos] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         download()
         loadData()
+        
     }
     
     func loadData() {
         updateRepos { (error) in
-            print(self.repos)
+            print("Repos:...." , self.repos)
+            self.textView.text = self.repos[2].name
         }
     }
     
@@ -42,8 +44,7 @@ class ViewController: UIViewController {
                     return }
             do{
                 let decoder = JSONDecoder()
-                let user = try decoder.decode(User.self, from:
-                    dataResponse) //Decode JSON Response Data
+                let user = try decoder.decode(User.self, from: dataResponse)
                 print(user.name)
             } catch let parsingError {
                 print("Error", parsingError)
@@ -62,7 +63,6 @@ class ViewController: UIViewController {
             do{
                 let decoder = JSONDecoder()
                 let repos = try decoder.decode([Repos].self, from: dataResponse)
-                print(dataResponse)
                 completion(repos, error)
             } catch let parsingError {
                 print("Error", parsingError)
