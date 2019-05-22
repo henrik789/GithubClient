@@ -6,7 +6,8 @@ private let badResponseError = NSError(domain: "Bad network response", code: 2, 
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet weak var nameLabel: UILabel!
     var user = User()
      var repos: [Repos] = []
     
@@ -14,13 +15,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         download()
         loadData()
-        
+
+        tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
+        tableview.register(UINib.init(nibName: UserTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UserTableViewCell.identifier)
     }
     
     func loadData() {
         updateRepos { (error) in
             print("Repos:...." , self.repos)
-            self.textView.text = self.repos[12].name
+            self.tableview.dataSource = self
+            self.tableview.delegate = self
+            self.tableview.reloadData()
         }
     }
     
@@ -77,4 +82,24 @@ public func dispatchOnMain<T>(_ block: @escaping (T)->Void, with parameters: T) 
     DispatchQueue.main.async {
         block(parameters)
     }
+}
+
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return repos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as! UserTableViewCell
+        
+            cell.nameLabel.text = repos[indexPath.row].name
+            nameLabel.text = user.name
+        
+        return cell
+    }
+    
+    
+    
+    
 }
