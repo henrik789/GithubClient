@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     func loadData() {
         updateRepos { (error) in
             print("Repos:...." , self.repos)
-            self.textView.text = self.repos[2].name
+            self.textView.text = self.repos[12].name
         }
     }
     

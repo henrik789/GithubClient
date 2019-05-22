@@ -15,6 +15,8 @@
 		AF2BB0822292C3E900713BFC /* GithubClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2BB0812292C3E900713BFC /* GithubClientTests.swift */; };
 		AF2BB08D2292C3E900713BFC /* GithubClientUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2BB08C2292C3E900713BFC /* GithubClientUITests.swift */; };
 		AF9326E32292C60E00C911DE /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9326E22292C60E00C911DE /* Networking.swift */; };
+		AF9F25F622956ED1004E6C52 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F25F422956ED1004E6C52 /* UserTableViewCell.swift */; };
+		AF9F25F722956ED1004E6C52 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9F25F522956ED1004E6C52 /* UserTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		AF2BB08C2292C3E900713BFC /* GithubClientUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClientUITests.swift; sourceTree = "<group>"; };
 		AF2BB08E2292C3E900713BFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AF9326E22292C60E00C911DE /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		AF9F25F422956ED1004E6C52 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		AF9F25F522956ED1004E6C52 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				AF2BB0752292C3E900713BFC /* LaunchScreen.storyboard */,
 				AF2BB0782292C3E900713BFC /* Info.plist */,
 				AF9326E22292C60E00C911DE /* Networking.swift */,
+				AF9F25F422956ED1004E6C52 /* UserTableViewCell.swift */,
+				AF9F25F522956ED1004E6C52 /* UserTableViewCell.xib */,
 			);
 			path = GithubClient;
 			sourceTree = "<group>";
@@ -232,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9F25F722956ED1004E6C52 /* UserTableViewCell.xib in Resources */,
 				AF2BB0772292C3E900713BFC /* LaunchScreen.storyboard in Resources */,
 				AF2BB0742292C3E900713BFC /* Assets.xcassets in Resources */,
 				AF2BB0722292C3E700713BFC /* Main.storyboard in Resources */,
@@ -259,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9F25F622956ED1004E6C52 /* UserTableViewCell.swift in Sources */,
 				AF9326E32292C60E00C911DE /* Networking.swift in Sources */,
 				AF2BB06F2292C3E700713BFC /* ViewController.swift in Sources */,
 				AF2BB06D2292C3E700713BFC /* AppDelegate.swift in Sources */,
