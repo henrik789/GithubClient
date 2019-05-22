@@ -18,6 +18,7 @@ class ViewController: UIViewController {
 
         tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
         tableview.register(UINib.init(nibName: UserTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UserTableViewCell.identifier)
+        tableview.estimatedRowHeight = 80
     }
     
     func loadData() {
@@ -28,7 +29,10 @@ class ViewController: UIViewController {
             self.tableview.reloadData()
         }
         updateUser { (error) in
-            self.headLabel.text = self.user.name
+            if let labelA = self.headLabel {
+                 labelA.text = self.user.name
+            }
+
         }
         
     }
@@ -108,7 +112,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as! UserTableViewCell
         
-            cell.nameLabel.text = repos[indexPath.row].name
+        if let labelA = cell.nameLabel {
+            labelA.text = repos[indexPath.row].name
+        }
+        if let labelB = cell.dateLabel {
+            labelB.text = repos[indexPath.row].created_at
+        }
+        if let labelC = cell.descriptionLabel {
+            labelC.text = repos[indexPath.row].description
+        }
         
         return cell
     }
