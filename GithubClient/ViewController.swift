@@ -6,16 +6,20 @@ private let badResponseError = NSError(domain: "Bad network response", code: 2, 
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var logo: UIImageView!
+    @IBOutlet weak var avatar: UIImageView!
+    @IBOutlet weak var useridLabel: UILabel!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var headLabel: UILabel!
     
     var user = User()
-     var repos: [Repos] = []
+    var repos: [Repos] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-
+        
         tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
         tableview.register(UINib.init(nibName: UserTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UserTableViewCell.identifier)
         tableview.estimatedRowHeight = 80
@@ -30,9 +34,9 @@ class ViewController: UIViewController {
         }
         updateUser { (error) in
             if let labelA = self.headLabel {
-                 labelA.text = self.user.name
+                labelA.text = self.user.name
             }
-
+            
         }
         
     }
@@ -49,7 +53,7 @@ class ViewController: UIViewController {
     }
     
     func updateRepos(completion: @escaping (Error?) -> Void) {
-         downloadRepos { (repos, error) in
+        downloadRepos { (repos, error) in
             guard error == nil else {
                 dispatchOnMain(completion, with: error)
                 return
@@ -95,7 +99,29 @@ class ViewController: UIViewController {
         task.resume()
     }
     
+    func getImages(completion: @escaping (UIImage, Error?) -> Void) {
+        
+        let myURL = URL(string: "https://avatars3.githubusercontent.com/u/35522771?v=4")!
+        let task = URLSession.shared.dataTask(with: myURL) { (data, response, error) in
+            guard let data = data,
+                error == nil else {
+                    return
+            }
+            do {
+                let imageData = Data(data),
+                let image = UIImage(data: imageData)
+            }
+            completion(image, nil)
+        }
+        task.resume()
+        
+    }
+    
 }
+
+
+
+
 
 public func dispatchOnMain<T>(_ block: @escaping (T)->Void, with parameters: T) {
     DispatchQueue.main.async {
