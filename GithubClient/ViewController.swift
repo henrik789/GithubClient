@@ -7,13 +7,13 @@ private let badResponseError = NSError(domain: "Bad network response", code: 2, 
 class ViewController: UIViewController {
     
     @IBOutlet weak var tableview: UITableView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var headLabel: UILabel!
+    
     var user = User()
      var repos: [Repos] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        download()
         loadData()
 
         tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
@@ -26,6 +26,21 @@ class ViewController: UIViewController {
             self.tableview.dataSource = self
             self.tableview.delegate = self
             self.tableview.reloadData()
+        }
+        updateUser { (error) in
+            self.headLabel.text = self.user.name
+        }
+        
+    }
+    
+    func updateUser(completion: @escaping (Error?) -> Void) {
+        download{ (user, error) in
+            guard error == nil else {
+                dispatchOnMain(completion, with: error)
+                return
+            }
+            self.user = user
+            dispatchOnMain(completion, with: nil)
         }
     }
     
@@ -40,7 +55,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func download(){
+    func download(completion: @escaping (User, Error?) -> Void){
         guard let url = URL(string: "https://api.github.com/users/henrik789") else {return}
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data,
@@ -50,7 +65,7 @@ class ViewController: UIViewController {
             do{
                 let decoder = JSONDecoder()
                 let user = try decoder.decode(User.self, from: dataResponse)
-                print(user.name)
+                completion(user, error)
             } catch let parsingError {
                 print("Error", parsingError)
             }
@@ -94,7 +109,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as! UserTableViewCell
         
             cell.nameLabel.text = repos[indexPath.row].name
-            nameLabel.text = user.name
         
         return cell
     }
@@ -103,3 +117,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+
+
