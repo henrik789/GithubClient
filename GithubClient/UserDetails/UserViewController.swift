@@ -7,18 +7,17 @@ private let badResponseError = NSError(domain: "Bad network response", code: 2, 
 class UserViewController: UIViewController {
     
     @IBOutlet weak var logo: UIImageView!
-    @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var useridLabel: UILabel!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var headLabel: UILabel!
     
+    var userID = ""
     var user = User()
     var repos: [Repos] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let identifier = "UserVC"
         loadData()
         logo.layer.cornerRadius = 20
         tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
@@ -36,6 +35,9 @@ class UserViewController: UIViewController {
         updateUser { (error) in
             if let labelA = self.headLabel {
                 labelA.text = self.user.name
+            }
+            if let userID = self.useridLabel {
+                userID.text = self.user.login
             }
             
         }

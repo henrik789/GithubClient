@@ -40,6 +40,7 @@ struct User: Codable {
     var id: Int = 0
     var public_repos: Int = 0
     var bio: String = ""
+    var login: String = ""
 }
 
 struct Repos: Codable {
