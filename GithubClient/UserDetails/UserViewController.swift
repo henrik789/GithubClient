@@ -18,6 +18,7 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let identifier = "UserVC"
         loadData()
         logo.layer.cornerRadius = 20
         tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)

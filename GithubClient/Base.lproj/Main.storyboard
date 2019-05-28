@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="hLJ-QK-rjl">
             <objects>
-                <viewController id="04a-Oz-AZT" sceneMemberID="viewController">
+                <viewController id="04a-Oz-AZT" customClass="LoginViewController" customModule="GithubClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7ZD-GH-8k1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -23,6 +23,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="userTextfield:" destination="Fec-cc-jsY" eventType="editingDidEnd" id="BdM-my-0Dd"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OW6-8x-TeQ">
                                 <rect key="frame" x="185" y="503" width="44" height="30"/>
@@ -35,6 +38,9 @@
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginButton:" destination="04a-Oz-AZT" eventType="touchUpInside" id="DOe-SB-OJH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,15 +55,20 @@
                         <viewLayoutGuide key="safeArea" id="aOU-Xl-FV5"/>
                     </view>
                     <navigationItem key="navigationItem" id="uCp-7l-Di9"/>
+                    <connections>
+                        <outlet property="loginButton" destination="OW6-8x-TeQ" id="P76-mG-wHc"/>
+                        <outlet property="usernameText" destination="mtz-PZ-eJR" id="Io6-zK-s1D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jq7-Vq-p1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Fec-cc-jsY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="726.08695652173924" y="118.52678571428571"/>
         </scene>
         <!--User View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="UserViewController" customModule="GithubClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserVC" id="BYZ-38-t0r" customClass="UserViewController" customModule="GithubClient" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
