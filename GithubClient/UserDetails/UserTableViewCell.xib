@@ -55,6 +55,7 @@
                     <constraint firstAttribute="trailing" secondItem="UzW-Pq-Dmc" secondAttribute="trailing" constant="16" id="rzh-EG-URp"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="dateLabel" destination="d81-PM-vdn" id="wc6-WP-hnl"/>

@@ -4,7 +4,7 @@ import UIKit
 private let badResponseError = NSError(domain: "Bad network response", code: 2, userInfo: nil)
 
 
-class ViewController: UIViewController {
+class UserViewController: UIViewController {
     
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var avatar: UIImageView!
@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        
+        logo.layer.cornerRadius = 20
         tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
         tableview.register(UINib.init(nibName: UserTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UserTableViewCell.identifier)
         tableview.estimatedRowHeight = 80
@@ -99,23 +99,23 @@ class ViewController: UIViewController {
         task.resume()
     }
     
-    func getImages(completion: @escaping (UIImage, Error?) -> Void) {
-        
-        let myURL = URL(string: "https://avatars3.githubusercontent.com/u/35522771?v=4")!
-        let task = URLSession.shared.dataTask(with: myURL) { (data, response, error) in
-            guard let data = data,
-                error == nil else {
-                    return
-            }
-            do {
-                let imageData = Data(data),
-                let image = UIImage(data: imageData)
-            }
-            completion(image, nil)
-        }
-        task.resume()
-        
-    }
+//    func getImages(completion: @escaping (UIImage, Error?) -> Void) {
+//        
+//        let myURL = URL(string: "https://avatars3.githubusercontent.com/u/35522771?v=4")!
+//        let task = URLSession.shared.dataTask(with: myURL) { (data, response, error) in
+//            guard let data = data,
+//                error == nil else {
+//                    return
+//            }
+//            do {
+//                let imageData = Data(data),
+//                let image = UIImage(data: imageData)
+//            }
+//            completion(image, nil)
+//        }
+//        task.resume()
+//        
+//    }
     
 }
 
@@ -130,7 +130,7 @@ public func dispatchOnMain<T>(_ block: @escaping (T)->Void, with parameters: T) 
 }
 
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repos.count
     }

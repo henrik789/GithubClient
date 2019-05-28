@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AF2BB06D2292C3E700713BFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2BB06C2292C3E700713BFC /* AppDelegate.swift */; };
-		AF2BB06F2292C3E700713BFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2BB06E2292C3E700713BFC /* ViewController.swift */; };
+		AF2BB06F2292C3E700713BFC /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2BB06E2292C3E700713BFC /* UserViewController.swift */; };
 		AF2BB0722292C3E700713BFC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2BB0702292C3E700713BFC /* Main.storyboard */; };
 		AF2BB0742292C3E900713BFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF2BB0732292C3E900713BFC /* Assets.xcassets */; };
 		AF2BB0772292C3E900713BFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF2BB0752292C3E900713BFC /* LaunchScreen.storyboard */; };
@@ -17,6 +17,8 @@
 		AF9326E32292C60E00C911DE /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9326E22292C60E00C911DE /* Networking.swift */; };
 		AF9F25F622956ED1004E6C52 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9F25F422956ED1004E6C52 /* UserTableViewCell.swift */; };
 		AF9F25F722956ED1004E6C52 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9F25F522956ED1004E6C52 /* UserTableViewCell.xib */; };
+		AFB503B0229D3848009F55D1 /* RepoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB503AF229D3848009F55D1 /* RepoTableViewController.swift */; };
+		AFB503B2229D386C009F55D1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB503B1229D386C009F55D1 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,7 @@
 /* Begin PBXFileReference section */
 		AF2BB0692292C3E700713BFC /* GithubClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF2BB06C2292C3E700713BFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AF2BB06E2292C3E700713BFC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AF2BB06E2292C3E700713BFC /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		AF2BB0712292C3E700713BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AF2BB0732292C3E900713BFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AF2BB0762292C3E900713BFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -53,6 +55,8 @@
 		AF9326E22292C60E00C911DE /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		AF9F25F422956ED1004E6C52 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		AF9F25F522956ED1004E6C52 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		AFB503AF229D3848009F55D1 /* RepoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoTableViewController.swift; sourceTree = "<group>"; };
+		AFB503B1229D386C009F55D1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +107,15 @@
 		AF2BB06B2292C3E700713BFC /* GithubClient */ = {
 			isa = PBXGroup;
 			children = (
+				AFB503AE229D3802009F55D1 /* RepoDetails */,
+				AFB503AD229D37F4009F55D1 /* UserDetails */,
+				AFB503AC229D37EA009F55D1 /* Login */,
 				AF2BB06C2292C3E700713BFC /* AppDelegate.swift */,
-				AF2BB06E2292C3E700713BFC /* ViewController.swift */,
 				AF2BB0702292C3E700713BFC /* Main.storyboard */,
 				AF2BB0732292C3E900713BFC /* Assets.xcassets */,
 				AF2BB0752292C3E900713BFC /* LaunchScreen.storyboard */,
 				AF2BB0782292C3E900713BFC /* Info.plist */,
 				AF9326E22292C60E00C911DE /* Networking.swift */,
-				AF9F25F422956ED1004E6C52 /* UserTableViewCell.swift */,
-				AF9F25F522956ED1004E6C52 /* UserTableViewCell.xib */,
 			);
 			path = GithubClient;
 			sourceTree = "<group>";
@@ -132,6 +136,32 @@
 				AF2BB08E2292C3E900713BFC /* Info.plist */,
 			);
 			path = GithubClientUITests;
+			sourceTree = "<group>";
+		};
+		AFB503AC229D37EA009F55D1 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				AFB503B1229D386C009F55D1 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		AFB503AD229D37F4009F55D1 /* UserDetails */ = {
+			isa = PBXGroup;
+			children = (
+				AF2BB06E2292C3E700713BFC /* UserViewController.swift */,
+				AF9F25F422956ED1004E6C52 /* UserTableViewCell.swift */,
+				AF9F25F522956ED1004E6C52 /* UserTableViewCell.xib */,
+			);
+			path = UserDetails;
+			sourceTree = "<group>";
+		};
+		AFB503AE229D3802009F55D1 /* RepoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				AFB503AF229D3848009F55D1 /* RepoTableViewController.swift */,
+			);
+			path = RepoDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFB503B2229D386C009F55D1 /* LoginViewController.swift in Sources */,
 				AF9F25F622956ED1004E6C52 /* UserTableViewCell.swift in Sources */,
 				AF9326E32292C60E00C911DE /* Networking.swift in Sources */,
-				AF2BB06F2292C3E700713BFC /* ViewController.swift in Sources */,
+				AF2BB06F2292C3E700713BFC /* UserViewController.swift in Sources */,
+				AFB503B0229D3848009F55D1 /* RepoTableViewController.swift in Sources */,
 				AF2BB06D2292C3E700713BFC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
