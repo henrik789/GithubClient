@@ -6,6 +6,8 @@ import Foundation
 
 class Networking {
 
+    let dataR = ""
+    
     func download(userID: String, completion: @escaping (User, Error?) -> Void){
         guard let url = URL(string: "https://api.github.com/users/\(userID)") else {return}
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -42,13 +44,29 @@ class Networking {
         task.resume()
     }
     
-
+    func downloadDetails(userID: [RepoDetails], completion: @escaping ([RepoDetails], Error?) -> Void){
+        guard let url = URL(string: "https://api.github.com/repos/henrik789/2DPlatformGame/commits") else {return}
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                error == nil else {
+                    print(error?.localizedDescription ?? "Response Error")
+                    return }
+            do{
+                let decoder = JSONDecoder()
+                let repos = try decoder.decode([RepoDetails].self, from: dataResponse) 
+                completion(repos, error)
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+            print(dataResponse)
+        }
+        task.resume()
+        
+    }
 }
 
 struct User: Codable {
     var name: String = ""
-    var id: Int = 0
-    var public_repos: Int = 0
     var bio: String = ""
     var login: String = ""
 }
@@ -58,5 +76,11 @@ struct Repos: Codable {
     let description: String?
     let created_at: String?
 }
+
+struct RepoDetails: Codable {
+    let url: String = ""
+    let commiter: String = ""
+}
+
 
 

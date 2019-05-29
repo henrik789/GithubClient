@@ -50,7 +50,6 @@
                             <constraint firstItem="mtz-PZ-eJR" firstAttribute="centerY" secondItem="7ZD-GH-8k1" secondAttribute="centerY" id="Xr7-Yt-R6P"/>
                             <constraint firstItem="mtz-PZ-eJR" firstAttribute="leading" secondItem="aOU-Xl-FV5" secondAttribute="leading" constant="40" id="dWl-wY-bQH"/>
                             <constraint firstItem="aOU-Xl-FV5" firstAttribute="trailing" secondItem="mtz-PZ-eJR" secondAttribute="trailing" constant="40" id="eHx-5d-s39"/>
-                            <constraint firstItem="mtz-PZ-eJR" firstAttribute="centerX" secondItem="7ZD-GH-8k1" secondAttribute="centerX" id="t8D-na-89h"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aOU-Xl-FV5"/>
                     </view>
@@ -165,17 +164,23 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="DUA-fW-KWr">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" rowHeight="65" id="DUA-fW-KWr">
+                                <rect key="frame" x="0.0" y="28" width="414" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DUA-fW-KWr" id="d8q-Hu-nYz">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJU-Fn-l3y">
-                                            <rect key="frame" x="8" y="8" width="398" height="27.5"/>
+                                            <rect key="frame" x="8" y="8" width="398" height="20.5"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCU-0F-ltb" userLabel="Time">
+                                            <rect key="frame" x="8" y="36.5" width="398" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -184,7 +189,10 @@
                                         <constraint firstAttribute="trailing" secondItem="yJU-Fn-l3y" secondAttribute="trailing" constant="8" id="Abd-xf-8MU"/>
                                         <constraint firstItem="yJU-Fn-l3y" firstAttribute="top" secondItem="d8q-Hu-nYz" secondAttribute="top" constant="8" id="FDj-2B-jdN"/>
                                         <constraint firstItem="yJU-Fn-l3y" firstAttribute="leading" secondItem="d8q-Hu-nYz" secondAttribute="leading" constant="8" id="HKP-ib-lHj"/>
-                                        <constraint firstAttribute="bottom" secondItem="yJU-Fn-l3y" secondAttribute="bottom" constant="8" id="nXm-wo-M4u"/>
+                                        <constraint firstAttribute="trailing" secondItem="gCU-0F-ltb" secondAttribute="trailing" constant="8" id="NVp-IU-gNJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="gCU-0F-ltb" secondAttribute="bottom" constant="8" id="Ui3-Wp-C0n"/>
+                                        <constraint firstItem="gCU-0F-ltb" firstAttribute="top" secondItem="yJU-Fn-l3y" secondAttribute="bottom" constant="8" id="cGa-A1-xUZ"/>
+                                        <constraint firstItem="gCU-0F-ltb" firstAttribute="leading" secondItem="d8q-Hu-nYz" secondAttribute="leading" constant="8" id="qZI-c9-3aE"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>

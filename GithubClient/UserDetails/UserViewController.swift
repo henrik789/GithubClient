@@ -86,15 +86,16 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: UserTableViewCell.identifier, for: indexPath) as! UserTableViewCell
+        let repoIndex = repos[indexPath.row]
         
         if let labelA = cell.nameLabel {
-            labelA.text = repos[indexPath.row].name
+            labelA.text = repoIndex.name
         }
         if let labelB = cell.dateLabel {
-            labelB.text = repos[indexPath.row].created_at
+            labelB.text = repoIndex.created_at
         }
         if let labelC = cell.descriptionLabel {
-            labelC.text = repos[indexPath.row].description
+            labelC.text = repoIndex.description
         }
         
         return cell
@@ -112,7 +113,7 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UserViewToRepoView" {
             let detailsVC = segue.destination as! RepoTableViewController
-            detailsVC.repoDetail = sender as! String
+            detailsVC.repoName = sender as! String
         }
     }
     
