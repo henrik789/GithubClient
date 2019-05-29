@@ -12,8 +12,6 @@ class LoginViewController: UIViewController {
         if let userID = usernameText.text {
             performSegue(withIdentifier: "LoginToUserView", sender: userID)
         }
-//        let vc = self.storyboard!.instantiateViewController(withIdentifier: "UserVC")
-//        self.navigationController!.pushViewController(vc, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -28,7 +26,5 @@ class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 20
         
     }
-    
-
 
 }

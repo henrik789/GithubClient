@@ -15,21 +15,21 @@ class UserViewController: UIViewController {
     var userID = ""
     var user = User()
     var repos: [Repos] = []
+    var network = Networking()
+    var repoDetail = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        logo.layer.cornerRadius = 20
         tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
         tableview.register(UINib.init(nibName: UserTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UserTableViewCell.identifier)
-        tableview.estimatedRowHeight = 80
+        self.tableview.dataSource = self
+        self.tableview.delegate = self
     }
+
     
     func loadData() {
         updateRepos { (error) in
-            print("Repos:...." , self.repos)
-            self.tableview.dataSource = self
-            self.tableview.delegate = self
             self.tableview.reloadData()
         }
         updateUser { (error) in
@@ -37,15 +37,13 @@ class UserViewController: UIViewController {
                 labelA.text = self.user.name
             }
             if let userID = self.useridLabel {
-                userID.text = self.user.login
+                userID.text = "Username: " + self.user.login
             }
-            
         }
-        
     }
     
     func updateUser(completion: @escaping (Error?) -> Void) {
-        download{ (user, error) in
+        network.download(userID: userID){ (user, error) in
             guard error == nil else {
                 dispatchOnMain(completion, with: error)
                 return
@@ -56,7 +54,7 @@ class UserViewController: UIViewController {
     }
     
     func updateRepos(completion: @escaping (Error?) -> Void) {
-        downloadRepos { (repos, error) in
+        network.downloadRepos(userID: userID) { (repos, error) in
             guard error == nil else {
                 dispatchOnMain(completion, with: error)
                 return
@@ -65,60 +63,6 @@ class UserViewController: UIViewController {
             dispatchOnMain(completion, with: nil)
         }
     }
-    
-    func download(completion: @escaping (User, Error?) -> Void){
-        guard let url = URL(string: "https://api.github.com/users/henrik789") else {return}
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do{
-                let decoder = JSONDecoder()
-                let user = try decoder.decode(User.self, from: dataResponse)
-                completion(user, error)
-            } catch let parsingError {
-                print("Error", parsingError)
-            }
-        }
-        task.resume()
-    }
-    
-    func downloadRepos(completion: @escaping ([Repos], Error?) -> Void){
-        guard let url = URL(string: "https://api.github.com/users/henrik789/repos") else {return}
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            guard let dataResponse = data,
-                error == nil else {
-                    print(error?.localizedDescription ?? "Response Error")
-                    return }
-            do{
-                let decoder = JSONDecoder()
-                let repos = try decoder.decode([Repos].self, from: dataResponse)
-                completion(repos, error)
-            } catch let parsingError {
-                print("Error", parsingError)
-            }
-        }
-        task.resume()
-    }
-    
-//    func getImages(completion: @escaping (UIImage, Error?) -> Void) {
-//        
-//        let myURL = URL(string: "https://avatars3.githubusercontent.com/u/35522771?v=4")!
-//        let task = URLSession.shared.dataTask(with: myURL) { (data, response, error) in
-//            guard let data = data,
-//                error == nil else {
-//                    return
-//            }
-//            do {
-//                let imageData = Data(data),
-//                let image = UIImage(data: imageData)
-//            }
-//            completion(image, nil)
-//        }
-//        task.resume()
-//        
-//    }
     
 }
 
@@ -134,6 +78,8 @@ public func dispatchOnMain<T>(_ block: @escaping (T)->Void, with parameters: T) 
 
 
 extension UserViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return repos.count
     }
@@ -154,8 +100,21 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let repoDetail = repos[indexPath.row].name {
+            performSegue(withIdentifier: "UserViewToRepoView", sender: repoDetail)
+        }
+        
+    }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "UserViewToRepoView" {
+            let detailsVC = segue.destination as! RepoTableViewController
+            detailsVC.repoDetail = sender as! String
+        }
+    }
     
 }
 

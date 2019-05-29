@@ -107,6 +107,7 @@
 		AF2BB06B2292C3E700713BFC /* GithubClient */ = {
 			isa = PBXGroup;
 			children = (
+				AFF9ADCB229E7CCD00E57304 /* Data */,
 				AFB503AE229D3802009F55D1 /* RepoDetails */,
 				AFB503AD229D37F4009F55D1 /* UserDetails */,
 				AFB503AC229D37EA009F55D1 /* Login */,
@@ -115,7 +116,6 @@
 				AF2BB0732292C3E900713BFC /* Assets.xcassets */,
 				AF2BB0752292C3E900713BFC /* LaunchScreen.storyboard */,
 				AF2BB0782292C3E900713BFC /* Info.plist */,
-				AF9326E22292C60E00C911DE /* Networking.swift */,
 			);
 			path = GithubClient;
 			sourceTree = "<group>";
@@ -162,6 +162,14 @@
 				AFB503AF229D3848009F55D1 /* RepoTableViewController.swift */,
 			);
 			path = RepoDetails;
+			sourceTree = "<group>";
+		};
+		AFF9ADCB229E7CCD00E57304 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				AF9326E22292C60E00C911DE /* Networking.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
