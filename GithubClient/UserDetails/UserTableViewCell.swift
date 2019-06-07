@@ -1,10 +1,4 @@
-//
-//  UserTableViewCell.swift
-//  GithubClient
-//
-//  Created by Henrik on 2019-05-22.
-//  Copyright © 2019 Henrik. All rights reserved.
-//
+
 
 import UIKit
 

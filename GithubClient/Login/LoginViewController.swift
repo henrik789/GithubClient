@@ -6,13 +6,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     var userID = ""
-
+    
     
     @IBAction func loginButton(_ sender: Any) {
         if let userID = usernameText.text {
+
             performSegue(withIdentifier: "LoginToUserView", sender: userID)
         }
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LoginToUserView" {
