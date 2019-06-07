@@ -1,5 +1,6 @@
 
 import UIKit
+import Auth0
 
 private let badResponseError = NSError(domain: "Bad network response", code: 2, userInfo: nil)
 
