@@ -21,11 +21,11 @@ class UserViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
-        tableview.register(UINib.init(nibName: UserTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UserTableViewCell.identifier)
-        self.tableview.dataSource = self
-        self.tableview.delegate = self
+//        loadData()
+//        tableview.register(UserTableViewCell.self, forCellReuseIdentifier: UserTableViewCell.identifier)
+//        tableview.register(UINib.init(nibName: UserTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: UserTableViewCell.identifier)
+//        self.tableview.dataSource = self
+//        self.tableview.delegate = self
     }
 
     
@@ -35,10 +35,10 @@ class UserViewController: UIViewController {
         }
         updateUser { (error) in
             if let labelA = self.headLabel {
-                labelA.text = self.user.name
+//                labelA.text = self.user.name
             }
             if let userID = self.useridLabel {
-                userID.text = "Username: " + self.user.login
+//                userID.text = "Username: " + self.user.login
             }
         }
     }

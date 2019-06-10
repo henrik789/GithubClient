@@ -5,7 +5,7 @@ import Foundation
 
 
 class Networking {
-
+    let userUrl = "https://clientdemohenrik.eu.auth0.com/api/v2/users/"
     let dataR = ""
     
     func download(userID: String, completion: @escaping (User, Error?) -> Void){
@@ -65,11 +65,17 @@ class Networking {
     }
 }
 
+//struct User: Codable {
+//    var name: String = ""
+//    var nickname: String = ""
+//    var bio: String = ""
+//    var login: String = ""
+//}
+
 struct User: Codable {
-    var name: String = ""
-    var bio: String = ""
-    var login: String = ""
+    var nickname: String = ""
 }
+
 
 struct Repos: Codable {
     let name: String?
