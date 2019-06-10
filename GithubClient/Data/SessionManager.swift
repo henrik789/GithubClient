@@ -27,7 +27,7 @@ class SessionManager {
                     self.profile = profile
                     self.download(userID: accessToken)
                     print(accessToken)
-                    print("*- - -* Profil info: ", profile.name)
+                    print("*- - -* Profil info: ", profile.name as Any)
                     callback(nil)
                 case .failure(let error):
                     callback(error)
@@ -54,7 +54,7 @@ class SessionManager {
             do {
                 let httpResponse = response as? HTTPURLResponse
                 let userName = try JSONDecoder().decode(User.self, from: dataResponse)
-                print(userName.nickname)
+                print("User: ", userName.nickname)
                 print(httpResponse as Any)
             }
             catch let parsingError {
