@@ -15,7 +15,9 @@ class LoginViewController: UIViewController {
         //        SessionManager.shared.patchMode = false
         showLogin()
         loginButton.titleLabel?.text = "Log out"
-        
+        if sessionManager.logout(){
+            loginButton.setTitle("Login", for: .normal)
+        }
         //        if let userID = usernameText.text {
         //            performSegue(withIdentifier: "LoginToUserView", sender: userID)
         //        }
@@ -58,6 +60,7 @@ class LoginViewController: UIViewController {
                                 print("LOGIN: ", userID)
                                 self.sessionManager.download(nickName: userID, completion: { (userName) in
                                     DispatchQueue.main.async{
+                                        self.userName = userName
                                         print("Username: ", self.userName.nickname)
                                         self.performSegue(withIdentifier: "LoginToUserView", sender: self.userName.nickname)
                                     }

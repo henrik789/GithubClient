@@ -12,6 +12,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var headLabel: UILabel!
+
     
     var userID = ""
     var user = User()
@@ -53,6 +54,7 @@ class UserViewController: UIViewController {
             self.user = user
             dispatchOnMain(completion, with: nil)
         }
+
     }
     
     func updateRepos(completion: @escaping (Error?) -> Void) {

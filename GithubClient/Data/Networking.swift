@@ -10,7 +10,7 @@ class Networking {
     var userName = UserName()
     
     func download(userID: String, completion: @escaping (User, Error?) -> Void){
-        guard let url = URL(string: "https://api.github.com/users/henrik789") else {return}
+        guard let url = URL(string: "https://api.github.com/users/\(userID)") else {return}
         print("userID from download: ", userID)
         print(userName.nickname)
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -30,7 +30,7 @@ class Networking {
     }
     
     func downloadRepos(userID: String, completion: @escaping ([Repos], Error?) -> Void){
-        guard let url = URL(string: "https://api.github.com/users/henrik789/repos") else {return}
+        guard let url = URL(string: "https://api.github.com/users/\(userID)/repos") else {return}
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data,
                 error == nil else {
