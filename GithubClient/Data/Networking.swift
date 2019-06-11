@@ -5,11 +5,14 @@ import Foundation
 
 
 class Networking {
-    let userUrl = "https://clientdemohenrik.eu.auth0.com/api/v2/users/"
+    //    let userUrl = "https://clientdemohenrik.eu.auth0.com/api/v2/users/"
     let dataR = ""
+    var userName = UserName()
     
     func download(userID: String, completion: @escaping (User, Error?) -> Void){
-        guard let url = URL(string: "https://api.github.com/users/\(userID)") else {return}
+        guard let url = URL(string: "https://api.github.com/users/henrik789") else {return}
+        print("userID from download: ", userID)
+        print(userName.nickname)
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data,
                 error == nil else {
@@ -20,14 +23,14 @@ class Networking {
                 let user = try decoder.decode(User.self, from: dataResponse)
                 completion(user, error)
             } catch let parsingError {
-                print("Error", parsingError)
+                print("Error user", parsingError)
             }
         }
         task.resume()
     }
     
     func downloadRepos(userID: String, completion: @escaping ([Repos], Error?) -> Void){
-        guard let url = URL(string: "https://api.github.com/users/\(userID)/repos") else {return}
+        guard let url = URL(string: "https://api.github.com/users/henrik789/repos") else {return}
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data,
                 error == nil else {
@@ -38,7 +41,7 @@ class Networking {
                 let repos = try decoder.decode([Repos].self, from: dataResponse)
                 completion(repos, error)
             } catch let parsingError {
-                print("Error", parsingError)
+                print("Error repo", parsingError)
             }
         }
         task.resume()
@@ -73,6 +76,12 @@ class Networking {
 //}
 
 struct User: Codable {
+    var name: String = ""
+    var login: String = ""
+    var bio: String = ""
+}
+
+struct UserName: Codable {
     var nickname: String = ""
 }
 
