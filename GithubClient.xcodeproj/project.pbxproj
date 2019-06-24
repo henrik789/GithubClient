@@ -23,6 +23,7 @@
 		AFB503B2229D386C009F55D1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB503B1229D386C009F55D1 /* LoginViewController.swift */; };
 		AFC6F3A222A7ECFB007426D8 /* Auth0.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFC6F3A122A7ECFB007426D8 /* Auth0.plist */; };
 		AFC6F3A422AC1CCA007426D8 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC6F3A322AC1CCA007426D8 /* SessionManager.swift */; };
+		AFC7AF0322B03ECC00F74386 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC7AF0222B03ECC00F74386 /* Models.swift */; };
 		B6FE5203CF0A310512C13F0D /* Pods_GithubClientUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAD87B7AE4B4B44A6887DE13 /* Pods_GithubClientUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		AFB503B1229D386C009F55D1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		AFC6F3A122A7ECFB007426D8 /* Auth0.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Auth0.plist; sourceTree = "<group>"; };
 		AFC6F3A322AC1CCA007426D8 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		AFC7AF0222B03ECC00F74386 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		EAD87B7AE4B4B44A6887DE13 /* Pods_GithubClientUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubClientUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -214,6 +216,7 @@
 			children = (
 				AF9326E22292C60E00C911DE /* Networking.swift */,
 				AFC6F3A322AC1CCA007426D8 /* SessionManager.swift */,
+				AFC7AF0222B03ECC00F74386 /* Models.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				AFB503B2229D386C009F55D1 /* LoginViewController.swift in Sources */,
 				AF9F25F622956ED1004E6C52 /* UserTableViewCell.swift in Sources */,
 				AF9326E32292C60E00C911DE /* Networking.swift in Sources */,
+				AFC7AF0322B03ECC00F74386 /* Models.swift in Sources */,
 				AF2BB06F2292C3E700713BFC /* UserViewController.swift in Sources */,
 				AFB503B0229D3848009F55D1 /* RepoTableViewController.swift in Sources */,
 				AF2BB06D2292C3E700713BFC /* AppDelegate.swift in Sources */,

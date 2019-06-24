@@ -28,7 +28,7 @@
                                             <constraint firstAttribute="width" constant="190" id="jR1-xd-uXp"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OW6-8x-TeQ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OW6-8x-TeQ" customClass="LoginButton" customModule="GithubClient" customModuleProvider="target">
                                         <rect key="frame" x="25" y="230" width="140" height="50"/>
                                         <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -72,12 +72,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FMi-8m-dn9">
-                                <rect key="frame" x="4" y="210" width="406" height="686"/>
+                                <rect key="frame" x="4" y="188" width="406" height="708"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s0l-yw-2ue">
-                                <rect key="frame" x="4" y="100" width="406" height="100"/>
+                                <rect key="frame" x="4" y="88" width="406" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="D9H-sk-PD3">
                                         <rect key="frame" x="20" y="8" width="286" height="84"/>
@@ -127,15 +127,15 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="s0l-yw-2ue" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="1fx-4Z-qDm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="s0l-yw-2ue" secondAttribute="trailing" constant="4" id="7nY-WZ-V7Q"/>
                             <constraint firstAttribute="bottom" secondItem="FMi-8m-dn9" secondAttribute="bottom" id="JMv-FO-FNV"/>
                             <constraint firstItem="s0l-yw-2ue" firstAttribute="trailing" secondItem="FMi-8m-dn9" secondAttribute="trailing" id="LrV-qh-EvZ"/>
-                            <constraint firstItem="FMi-8m-dn9" firstAttribute="top" secondItem="s0l-yw-2ue" secondAttribute="bottom" constant="10" id="l4e-lR-wQZ"/>
+                            <constraint firstItem="FMi-8m-dn9" firstAttribute="top" secondItem="s0l-yw-2ue" secondAttribute="bottom" id="l4e-lR-wQZ"/>
                             <constraint firstItem="s0l-yw-2ue" firstAttribute="leading" secondItem="FMi-8m-dn9" secondAttribute="leading" id="qxX-fZ-3V6"/>
-                            <constraint firstItem="s0l-yw-2ue" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="rQh-s4-D4C"/>
+                            <constraint firstItem="s0l-yw-2ue" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="rQh-s4-D4C"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -168,30 +168,6 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DUA-fW-KWr" id="d8q-Hu-nYz">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="64.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJU-Fn-l3y">
-                                            <rect key="frame" x="8" y="8" width="398" height="20.5"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCU-0F-ltb" userLabel="Time">
-                                            <rect key="frame" x="8" y="36.5" width="398" height="20"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="yJU-Fn-l3y" secondAttribute="trailing" constant="8" id="Abd-xf-8MU"/>
-                                        <constraint firstItem="yJU-Fn-l3y" firstAttribute="top" secondItem="d8q-Hu-nYz" secondAttribute="top" constant="8" id="FDj-2B-jdN"/>
-                                        <constraint firstItem="yJU-Fn-l3y" firstAttribute="leading" secondItem="d8q-Hu-nYz" secondAttribute="leading" constant="8" id="HKP-ib-lHj"/>
-                                        <constraint firstAttribute="trailing" secondItem="gCU-0F-ltb" secondAttribute="trailing" constant="8" id="NVp-IU-gNJ"/>
-                                        <constraint firstAttribute="bottom" secondItem="gCU-0F-ltb" secondAttribute="bottom" constant="8" id="Ui3-Wp-C0n"/>
-                                        <constraint firstItem="gCU-0F-ltb" firstAttribute="top" secondItem="yJU-Fn-l3y" secondAttribute="bottom" constant="8" id="cGa-A1-xUZ"/>
-                                        <constraint firstItem="gCU-0F-ltb" firstAttribute="leading" secondItem="d8q-Hu-nYz" secondAttribute="leading" constant="8" id="qZI-c9-3aE"/>
-                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             </tableViewCell>

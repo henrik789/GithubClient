@@ -108,8 +108,10 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if let repoDetail = repos[indexPath.row].name {
-            performSegue(withIdentifier: "UserViewToRepoView", sender: repoDetail)
+        if let repoDetail = repos[indexPath.row].commits_url {
+            let repoUrl = repoDetail.replacingOccurrences(of: "{/sha}", with: "")
+            performSegue(withIdentifier: "UserViewToRepoView", sender: repoUrl)
+            print(repoUrl)
         }
         
     }
@@ -117,7 +119,8 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "UserViewToRepoView" {
             let detailsVC = segue.destination as! RepoTableViewController
-            detailsVC.repoName = sender as! String
+            detailsVC.repoUrl = sender as! String
+            print()
         }
     }
     

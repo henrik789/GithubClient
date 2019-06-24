@@ -11,8 +11,7 @@ class Networking {
     
     func download(userID: String, completion: @escaping (User, Error?) -> Void){
         guard let url = URL(string: "https://api.github.com/users/\(userID)") else {return}
-        print("userID from download: ", userID)
-        print(userName.nickname)
+
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data,
                 error == nil else {
@@ -47,55 +46,75 @@ class Networking {
         task.resume()
     }
     
-    func downloadDetails(userID: [RepoDetails], completion: @escaping ([RepoDetails], Error?) -> Void){
-        guard let url = URL(string: "https://api.github.com/repos/henrik789/2DPlatformGame/commits") else {return}
+//    func downloadDetails(repoURL: String, completion: @escaping ([RepoDetails], Error?) -> Void){
+//        guard let url = URL(string: repoURL) else {return}
+//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            guard let dataResponse = data,
+//                error == nil else {
+//                    print(error?.localizedDescription ?? "Response Error")
+//                    return }
+//            do{
+//                let decoder = JSONDecoder()
+//                let repos = try decoder.decode([RepoDetails].self, from: dataResponse)
+//                var model = [RepoDetails]()
+//                for dic in jsonArray{
+//                    model.append(User(dic)) // adding now value in Model array
+//                }
+//                print(model[0].userId) // 1211
+//
+//                print(dataResponse)
+//                completion(repos, error)
+//            } catch let parsingError {
+//                print("Error", parsingError)
+//            }
+//
+//        }
+//        task.resume()
+//
+//    }
+    
+
+    
+    func downloadDetails(repoURL: String, completion: @escaping ([RepoDetails], Error?) -> Void){
+guard let url = URL(string: repoURL) else {return}
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard let dataResponse = data,
                 error == nil else {
                     print(error?.localizedDescription ?? "Response Error")
                     return }
             do{
-                let decoder = JSONDecoder()
-                let repos = try decoder.decode([RepoDetails].self, from: dataResponse) 
-                completion(repos, error)
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:
+                    dataResponse, options: [])
+                guard let jsonArray = jsonResponse as? [[String: Any]] else {
+                    return
+                }
+                for dict in jsonArray{
+                    guard let title = dict["commit"] as? String else { return }
+                    
+                    print(title) //Output
+                }
+//               var model = [RepoDetails]()as? [String: Any]
+//                for dic in jsonArray{
+//                    model.append(RepoDetails(from: dic))
+//                }
+                
+//                model = jsonArray.compactMap{ (dictionary) in
+//                return RepoDetails()
+//                }
+//                print(model[0].commit.message)
+
             } catch let parsingError {
                 print("Error", parsingError)
             }
-            print(dataResponse)
         }
         task.resume()
         
     }
-}
-
-//struct User: Codable {
-//    var name: String = ""
-//    var nickname: String = ""
-//    var bio: String = ""
-//    var login: String = ""
-//}
-
-struct User: Codable {
-    var name: String = ""
-    var login: String = ""
-    var bio: String = ""
-}
-
-struct UserName: Codable {
-    var nickname: String = ""
+    
 }
 
 
-struct Repos: Codable {
-    let name: String?
-    let description: String?
-    let created_at: String?
-}
-
-struct RepoDetails: Codable {
-    let url: String = ""
-    let commiter: String = ""
-}
 
 
 
