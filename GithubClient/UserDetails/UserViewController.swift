@@ -12,7 +12,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var tableview: UITableView!
     @IBOutlet weak var headLabel: UILabel!
-
+    
     
     var userID = ""
     var user = User()
@@ -28,15 +28,15 @@ class UserViewController: UIViewController {
         self.tableview.dataSource = self
         self.tableview.delegate = self
     }
-
+    
     
     func loadData() {
         updateRepos { (error) in
             self.tableview.reloadData()
         }
         updateUser { (error) in
-            if let labelA = self.headLabel {
-                labelA.text = self.user.name
+            if let labelUserName = self.headLabel {
+                labelUserName.text = self.user.name
             }
             if let userID = self.useridLabel {
                 userID.text = "Username: " + self.user.login
@@ -54,7 +54,7 @@ class UserViewController: UIViewController {
             self.user = user
             dispatchOnMain(completion, with: nil)
         }
-
+        
     }
     
     func updateRepos(completion: @escaping (Error?) -> Void) {
@@ -64,6 +64,7 @@ class UserViewController: UIViewController {
                 return
             }
             self.repos = repos
+            print(repos)
             dispatchOnMain(completion, with: nil)
         }
     }
@@ -96,13 +97,40 @@ extension UserViewController: UITableViewDelegate, UITableViewDataSource {
             labelA.text = repoIndex.name
         }
         if let labelB = cell.dateLabel {
-            labelB.text = repoIndex.created_at
+            
+            //            let dateFormatterGet = DateFormatter()
+            //            dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            //
+            //            let dateFormatter = DateFormatter()
+            //            dateFormatter.dateFormat = "MMM dd, yyyy"
+            //
+            //            if let date = dateFormatterGet.date(from: repoIndex.created_at!){
+            labelB.text = dateFormat(dateUnformatted: repoIndex.created_at!)
+            
+            //                print(dateFormatter.string(from: date))
+            //                print(repoIndex.created_at)
+            //            }
         }
         if let labelC = cell.descriptionLabel {
             labelC.text = repoIndex.description
         }
         
         return cell
+    }
+    
+    func dateFormat(dateUnformatted: String) -> String{
+        
+        let dateFormatterGet = DateFormatter()
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd, yyyy"
+        var date = ""
+        
+        if let dateFormatted = dateFormatterGet.date(from: dateUnformatted){
+            date = dateFormatter.string(from: dateFormatted)
+        }
+        return date
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

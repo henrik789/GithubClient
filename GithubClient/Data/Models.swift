@@ -1,6 +1,7 @@
 
 import Foundation
 
+
 struct User: Codable {
     var name: String = ""
     var login: String = ""
@@ -17,6 +18,7 @@ struct Repos: Codable {
     let description: String?
     let created_at: String?
     let commits_url: String?
+    
 }
 
 struct RepoDetails: Codable {

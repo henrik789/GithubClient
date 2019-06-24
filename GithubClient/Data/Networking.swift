@@ -45,32 +45,6 @@ class Networking {
         task.resume()
     }
     
-//    func downloadDetails(repoURL: String, completion: @escaping ([RepoDetails], Error?) -> Void){
-//        guard let url = URL(string: repoURL) else {return}
-//        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            guard let dataResponse = data,
-//                error == nil else {
-//                    print(error?.localizedDescription ?? "Response Error")
-//                    return }
-//            do{
-//                let decoder = JSONDecoder()
-//                let repos = try decoder.decode([RepoDetails].self, from: dataResponse)
-//                var model = [RepoDetails]()
-//                for dic in jsonArray{
-//                    model.append(User(dic)) // adding now value in Model array
-//                }
-//                print(model[0].userId) // 1211
-//
-//                print(dataResponse)
-//                completion(repos, error)
-//            } catch let parsingError {
-//                print("Error", parsingError)
-//            }
-//
-//        }
-//        task.resume()
-//
-//    }
     
 
     
