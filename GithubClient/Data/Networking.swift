@@ -5,7 +5,6 @@ import Foundation
 
 
 class Networking {
-    //    let userUrl = "https://clientdemohenrik.eu.auth0.com/api/v2/users/"
     let dataR = ""
     var userName = UserName()
     

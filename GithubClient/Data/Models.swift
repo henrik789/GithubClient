@@ -28,12 +28,6 @@ struct RepoDetails: Codable {
         self.commit = commit
     }
 
-//    init(url: String, commiter: String, sha: String, commit: Commit) {
-//        self.url = url
-//        self.commiter = commiter
-//        self.sha = sha
-//        self.commit = commit
-//    }
 }
 
 
